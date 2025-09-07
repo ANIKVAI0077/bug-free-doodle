@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mobile CV Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h2 class="title">CV Generator</h2>
+
+    <input type="text" id="name" placeholder="Full Name" />
+    <input type="text" id="father" placeholder="Father's Name" />
+    <input type="text" id="mother" placeholder="Mother's Name" />
+    <input type="text" id="address" placeholder="Address" />
+    <input type="text" id="mobile" placeholder="Mobile Number" />
+    <input type="date" id="dob" placeholder="Date of Birth" />
+    <select id="sex">
+      <option value="">Select Sex</option>
+      <option>Male</option>
+      <option>Female</option>
+      <option>Other</option>
+    </select>
+    <input type="text" id="height" placeholder="Height" />
+    <select id="religion">
+      <option value="">Select Religion</option>
+      <option>Islam</option>
+      <option>Hinduism</option>
+      <option>Christianity</option>
+    </select>
+    <input type="text" id="nationality" placeholder="Nationality" />
+
+    <h3>SSC Qualification</h3>
+    <input type="text" id="ssc_exam" placeholder="Exam Name" />
+    <input type="text" id="ssc_group" placeholder="Group" />
+    <input type="text" id="ssc_board" placeholder="Board" />
+    <input type="text" id="ssc_gpa" placeholder="GPA" />
+    <input type="text" id="ssc_year" placeholder="Year" />
+
+    <h3>HSC Qualification</h3>
+    <input type="text" id="hsc_exam" placeholder="Exam Name" />
+    <input type="text" id="hsc_group" placeholder="Group" />
+    <input type="text" id="hsc_board" placeholder="Board" />
+    <input type="text" id="hsc_gpa" placeholder="GPA" />
+    <input type="text" id="hsc_year" placeholder="Year" />
+
+    <input type="file" id="photo" accept="image/*" />
+
+    <div class="button-group">
+      <button onclick="generateCV()">Generate CV</button>
+      <button onclick="saveAsPDF()">Save as PDF</button>
+    </div>
+
+    <div id="cv-output" class="cv-output"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
