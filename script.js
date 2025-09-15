@@ -1,78 +1,37 @@
 function generateCV() {
-  const name = document.getElementById('name').value;
-  const father = document.getElementById('father').value;
-  const mother = document.getElementById('mother').value;
-  const address = document.getElementById('address').value;
-  const mobile = document.getElementById('mobile').value;
-  const dob = document.getElementById('dob').value;
-  const sex = document.getElementById('sex').value;
-  const height = document.getElementById('height').value;
-  const religion = document.getElementById('religion').value;
-  const nationality = document.getElementById('nationality').value;
+  document.getElementById("form-section").style.display = "none";
+  document.getElementById("cv-section").style.display = "block";
 
-  const ssc_exam = document.getElementById('ssc_exam').value;
-  const ssc_group = document.getElementById('ssc_group').value;
-  const ssc_board = document.getElementById('ssc_board').value;
-  const ssc_gpa = document.getElementById('ssc_gpa').value;
-  const ssc_year = document.getElementById('ssc_year').value;
+  document.getElementById("r-name").innerText = document.getElementById("name").value;
+  document.getElementById("r-father").innerText = document.getElementById("father").value;
+  document.getElementById("r-mother").innerText = document.getElementById("mother").value;
+  document.getElementById("r-permanent").innerText = document.getElementById("permanent").value;
+  document.getElementById("r-present").innerText = document.getElementById("present").value;
+  document.getElementById("r-mobile").innerText = document.getElementById("mobile").value;
+  document.getElementById("r-dob").innerText = document.getElementById("dob").value;
+  document.getElementById("r-sex").innerText = document.getElementById("sex").value;
+  document.getElementById("r-height").innerText = document.getElementById("height").value;
+  document.getElementById("r-religion").innerText = document.getElementById("religion").value;
+  document.getElementById("r-nationality").innerText = document.getElementById("nationality").value;
 
-  const hsc_exam = document.getElementById('hsc_exam').value;
-  const hsc_group = document.getElementById('hsc_group').value;
-  const hsc_board = document.getElementById('hsc_board').value;
-  const hsc_gpa = document.getElementById('hsc_gpa').value;
-  const hsc_year = document.getElementById('hsc_year').value;
+  document.getElementById("r-exam1").innerText = document.getElementById("exam1").value;
+  document.getElementById("r-group1").innerText = document.getElementById("group1").value;
+  document.getElementById("r-board1").innerText = document.getElementById("board1").value;
+  document.getElementById("r-gpa1").innerText = document.getElementById("gpa1").value;
+  document.getElementById("r-year1").innerText = document.getElementById("year1").value;
 
-  const photo = document.getElementById('photo').files[0];
-  const reader = new FileReader();
-
-  reader.onload = function (e) {
-    const output = document.getElementById('cv-output');
-    output.innerHTML = `
-      <img src="${e.target.result}" alt="Photo">
-      <h2 style="text-align:center;">Curriculum Vitae</h2>
-      <strong>Full Name:</strong> ${name}<br>
-      <strong>Father's Name:</strong> ${father}<br>
-      <strong>Mother's Name:</strong> ${mother}<br>
-      <strong>Address:</strong> ${address}<br>
-      <strong>Mobile Number:</strong> ${mobile}<br>
-      <strong>Date of Birth:</strong> ${dob}<br>
-      <strong>Sex:</strong> ${sex}<br>
-      <strong>Height:</strong> ${height}<br>
-      <strong>Religion:</strong> ${religion}<br>
-      <strong>Nationality:</strong> ${nationality}<br><br>
-
-      <strong>Educational Qualification:</strong>
-      <table>
-        <tr>
-          <th>Name of Exam</th>
-          <th>Group</th>
-          <th>Board</th>
-          <th>GPA</th>
-          <th>Year</th>
-        </tr>
-        <tr>
-          <td>${ssc_exam}</td>
-          <td>${ssc_group}</td>
-          <td>${ssc_board}</td>
-          <td>${ssc_gpa}</td>
-          <td>${ssc_year}</td>
-        </tr>
-        <tr>
-          <td>${hsc_exam}</td>
-          <td>${hsc_group}</td>
-          <td>${hsc_board}</td>
-          <td>${hsc_gpa}</td>
-          <td>${hsc_year}</td>
-        </tr>
-      </table>
-    `;
-  };
-
-  if (photo) {
-    reader.readAsDataURL(photo);
-  }
+  document.getElementById("r-exam2").innerText = document.getElementById("exam2").value;
+  document.getElementById("r-group2").innerText = document.getElementById("group2").value;
+  document.getElementById("r-board2").innerText = document.getElementById("board2").value;
+  document.getElementById("r-gpa2").innerText = document.getElementById("gpa2").value;
+  document.getElementById("r-year2").innerText = document.getElementById("year2").value;
 }
 
-function saveAsPDF() {
+function printCV() {
   window.print();
+}
+
+function editCV() {
+  document.getElementById("form-section").style.display = "block";
+  document.getElementById("cv-section").style.display = "none";
 }

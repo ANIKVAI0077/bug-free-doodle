@@ -1,58 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mobile CV Generator</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV Generator</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h2 class="title">CV Generator</h2>
+    <!-- CV Input Form -->
+    <section id="form-section">
+      <h1>CV Generator</h1>
+      <form id="cvForm">
+        <label>Full Name: <input type="text" id="name" required></label>
+        <label>Father's Name: <input type="text" id="father" required></label>
+        <label>Mother's Name: <input type="text" id="mother" required></label>
+        <label>Permanent Address: <input type="text" id="permanent" required></label>
+        <label>Present Address: <input type="text" id="present" required></label>
+        <label>Mobile Number: <input type="text" id="mobile" required></label>
+        <label>Date of Birth: <input type="date" id="dob" required></label>
+        <label>Sex:
+          <select id="sex">
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label>Height: <input type="text" id="height"></label>
+        <label>Religion: 
+          <select id="religion">
+            <option>Muslim</option>
+            <option>Hindu</option>
+            <option>Christian</option>
+            <option>Buddhist</option>
+          </select>
+        </label>
+        <label>Nationality: <input type="text" id="nationality" required></label>
 
-    <input type="text" id="name" placeholder="Full Name" />
-    <input type="text" id="father" placeholder="Father's Name" />
-    <input type="text" id="mother" placeholder="Mother's Name" />
-    <input type="text" id="address" placeholder="Address" />
-    <input type="text" id="mobile" placeholder="Mobile Number" />
-    <input type="date" id="dob" placeholder="Date of Birth" />
-    <select id="sex">
-      <option value="">Select Sex</option>
-      <option>Male</option>
-      <option>Female</option>
-      <option>Other</option>
-    </select>
-    <input type="text" id="height" placeholder="Height" />
-    <select id="religion">
-      <option value="">Select Religion</option>
-      <option>Islam</option>
-      <option>Hinduism</option>
-      <option>Christianity</option>
-    </select>
-    <input type="text" id="nationality" placeholder="Nationality" />
+        <h3>Educational Qualification</h3>
+        <div class="edu">
+          <label>Exam: <input type="text" id="exam1" value="HSC"></label>
+          <label>Group: <input type="text" id="group1" value="Business"></label>
+          <label>Board: <input type="text" id="board1" value="Sylhet"></label>
+          <label>GPA: <input type="text" id="gpa1" value="3.08"></label>
+          <label>Year: <input type="text" id="year1" value="2016"></label>
+        </div>
+        <div class="edu">
+          <label>Exam: <input type="text" id="exam2" value="SSC"></label>
+          <label>Group: <input type="text" id="group2"></label>
+          <label>Board: <input type="text" id="board2"></label>
+          <label>GPA: <input type="text" id="gpa2"></label>
+          <label>Year: <input type="text" id="year2"></label>
+        </div>
 
-    <h3>SSC Qualification</h3>
-    <input type="text" id="ssc_exam" placeholder="Exam Name" />
-    <input type="text" id="ssc_group" placeholder="Group" />
-    <input type="text" id="ssc_board" placeholder="Board" />
-    <input type="text" id="ssc_gpa" placeholder="GPA" />
-    <input type="text" id="ssc_year" placeholder="Year" />
+        <button type="button" onclick="generateCV()">Generate CV</button>
+      </form>
+    </section>
 
-    <h3>HSC Qualification</h3>
-    <input type="text" id="hsc_exam" placeholder="Exam Name" />
-    <input type="text" id="hsc_group" placeholder="Group" />
-    <input type="text" id="hsc_board" placeholder="Board" />
-    <input type="text" id="hsc_gpa" placeholder="GPA" />
-    <input type="text" id="hsc_year" placeholder="Year" />
+    <!-- CV Preview -->
+    <section id="cv-section" style="display:none;">
+      <div id="cv" class="cv-paper">
+        <h1 class="cv-title">Curriculum Vitae</h1>
+        <p><strong>Name:</strong> <span id="r-name"></span></p>
+        <p><strong>Father's Name:</strong> <span id="r-father"></span></p>
+        <p><strong>Mother's Name:</strong> <span id="r-mother"></span></p>
+        <p><strong>Permanent Address:</strong> <span id="r-permanent"></span></p>
+        <p><strong>Present Address:</strong> <span id="r-present"></span></p>
+        <p><strong>Mobile Number:</strong> <span id="r-mobile"></span></p>
+        <p><strong>Date of Birth:</strong> <span id="r-dob"></span></p>
+        <p><strong>Sex:</strong> <span id="r-sex"></span></p>
+        <p><strong>Height:</strong> <span id="r-height"></span></p>
+        <p><strong>Religion:</strong> <span id="r-religion"></span></p>
+        <p><strong>Nationality:</strong> <span id="r-nationality"></span></p>
 
-    <input type="file" id="photo" accept="image/*" />
+        <h2 class="edu-title">Educational Qualification</h2>
+        <table class="edu-table">
+          <thead>
+            <tr>
+              <th>Name of Exam</th>
+              <th>Group</th>
+              <th>Board</th>
+              <th>GPA</th>
+              <th>Year</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="r-exam1"></td>
+              <td id="r-group1"></td>
+              <td id="r-board1"></td>
+              <td id="r-gpa1"></td>
+              <td id="r-year1"></td>
+            </tr>
+            <tr>
+              <td id="r-exam2"></td>
+              <td id="r-group2"></td>
+              <td id="r-board2"></td>
+              <td id="r-gpa2"></td>
+              <td id="r-year2"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-    <div class="button-group">
-      <button onclick="generateCV()">Generate CV</button>
-      <button onclick="saveAsPDF()">Save as PDF</button>
-    </div>
-
-    <div id="cv-output" class="cv-output"></div>
+      <div class="btns">
+        <button onclick="printCV()">Save/Print CV</button>
+        <button onclick="editCV()">Edit Again</button>
+      </div>
+    </section>
   </div>
   <script src="script.js"></script>
 </body>
