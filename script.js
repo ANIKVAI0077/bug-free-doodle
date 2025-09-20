@@ -1,37 +1,60 @@
-function generateCV() {
+// Height options dynamically generate
+const heightSelect = document.getElementById("height");
+for (let ft = 4; ft <= 7; ft++) {
+  for (let inch = 0; inch < 12; inch++) {
+    if (ft === 4 && inch < 6) continue;
+    if (ft === 7 && inch > 8) break;
+    let opt = document.createElement("option");
+    opt.textContent = `${ft}ft ${inch}in`;
+    heightSelect.appendChild(opt);
+  }
+}
+
+document.getElementById("cvForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  // Personal info
+  document.getElementById("cv-name").textContent = document.getElementById("name").value;
+  document.getElementById("cv-father").textContent = document.getElementById("father").value;
+  document.getElementById("cv-mother").textContent = document.getElementById("mother").value;
+  document.getElementById("cv-permanent").textContent = document.getElementById("permanent").value;
+  document.getElementById("cv-present").textContent = document.getElementById("present").value;
+  document.getElementById("cv-mobile").textContent = document.getElementById("mobile").value;
+
+  const dobValue = document.getElementById("dob").value;
+  document.getElementById("cv-dob").textContent = new Date(dobValue).toLocaleDateString();
+
+  document.getElementById("cv-gender").textContent = document.getElementById("gender").value;
+  document.getElementById("cv-height").textContent = document.getElementById("height").value;
+  document.getElementById("cv-religion").textContent = document.getElementById("religion").value;
+  document.getElementById("cv-nationality").textContent = document.getElementById("nationality").value;
+
+  // Education info
+  const hscGroup = document.getElementById("hsc-group").value;
+  const hscBoard = document.getElementById("hsc-board").value;
+  const hscGpa = document.getElementById("hsc-gpa").value;
+  const hscYear = document.getElementById("hsc-year").value;
+
+  const sscGroup = document.getElementById("ssc-group").value;
+  const sscBoard = document.getElementById("ssc-board").value;
+  const sscGpa = document.getElementById("ssc-gpa").value;
+  const sscYear = document.getElementById("ssc-year").value;
+
+  const eduTable = document.querySelector(".edu-box table");
+  eduTable.rows[1].cells[1].textContent = hscGroup;
+  eduTable.rows[1].cells[2].textContent = hscBoard;
+  eduTable.rows[1].cells[3].textContent = hscGpa;
+  eduTable.rows[1].cells[4].textContent = hscYear;
+
+  eduTable.rows[2].cells[1].textContent = sscGroup;
+  eduTable.rows[2].cells[2].textContent = sscBoard;
+  eduTable.rows[2].cells[3].textContent = sscGpa;
+  eduTable.rows[2].cells[4].textContent = sscYear;
+
+  // Hide form & service-box
   document.getElementById("form-section").style.display = "none";
-  document.getElementById("cv-section").style.display = "block";
+  document.querySelector(".service-box").style.display = "none";
 
-  document.getElementById("r-name").innerText = document.getElementById("name").value;
-  document.getElementById("r-father").innerText = document.getElementById("father").value;
-  document.getElementById("r-mother").innerText = document.getElementById("mother").value;
-  document.getElementById("r-permanent").innerText = document.getElementById("permanent").value;
-  document.getElementById("r-present").innerText = document.getElementById("present").value;
-  document.getElementById("r-mobile").innerText = document.getElementById("mobile").value;
-  document.getElementById("r-dob").innerText = document.getElementById("dob").value;
-  document.getElementById("r-sex").innerText = document.getElementById("sex").value;
-  document.getElementById("r-height").innerText = document.getElementById("height").value;
-  document.getElementById("r-religion").innerText = document.getElementById("religion").value;
-  document.getElementById("r-nationality").innerText = document.getElementById("nationality").value;
-
-  document.getElementById("r-exam1").innerText = document.getElementById("exam1").value;
-  document.getElementById("r-group1").innerText = document.getElementById("group1").value;
-  document.getElementById("r-board1").innerText = document.getElementById("board1").value;
-  document.getElementById("r-gpa1").innerText = document.getElementById("gpa1").value;
-  document.getElementById("r-year1").innerText = document.getElementById("year1").value;
-
-  document.getElementById("r-exam2").innerText = document.getElementById("exam2").value;
-  document.getElementById("r-group2").innerText = document.getElementById("group2").value;
-  document.getElementById("r-board2").innerText = document.getElementById("board2").value;
-  document.getElementById("r-gpa2").innerText = document.getElementById("gpa2").value;
-  document.getElementById("r-year2").innerText = document.getElementById("year2").value;
-}
-
-function printCV() {
-  window.print();
-}
-
-function editCV() {
-  document.getElementById("form-section").style.display = "block";
-  document.getElementById("cv-section").style.display = "none";
-}
+  // Show CV section
+  document.getElementById("cv-section").style.display = "flex";
+});

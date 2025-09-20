@@ -1,115 +1,140 @@
 body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(to right, #f0f8ff, #e6f7ff);
+  background: linear-gradient(120deg, #e0f7fa, #fce4ec);
   margin: 0;
-  padding: 0;
+  padding: 20px;
 }
 
 .container {
-  width: 90%;
+  max-width: 900px;
   margin: auto;
-  padding: 20px;
 }
 
-/* Form Section */
-#form-section {
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  margin-bottom: 20px;
-}
-
-#form-section h1 {
+h1, h2 {
   text-align: center;
-  color: #0066cc;
-  margin-bottom: 15px;
 }
 
-form label {
+form {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+label {
   display: block;
-  margin: 8px 0;
-  font-weight: bold;
+  margin: 12px 0;
+  font-size: 20px;
 }
 
-form input, form select {
+input, select {
   width: 100%;
-  padding: 8px;
-  margin-top: 3px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 12px;
+  margin-top: 5px;
+  font-size: 18px;
 }
 
-form button {
-  margin-top: 15px;
-  padding: 10px 20px;
-  background: #0066cc;
+button {
+  background: #007bff;
   color: white;
   border: none;
+  padding: 14px 24px;
+  margin-top: 20px;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 20px;
 }
 
-form button:hover {
-  background: #004d99;
+button:hover {
+  background: #0056b3;
 }
 
-/* CV Section */
-.cv-paper {
-  width: 210mm;
-  height: 297mm;
+.cv {
   background: white;
-  padding: 30px 40px;
+  padding: 50px;
+  margin-top: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  width: 794px;  /* A4 width in px */
+  height: 1123px; /* A4 height in px */
   margin: auto;
-  border: 1px solid #ccc;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  font-size: 18px;
-  line-height: 1.8;
+  font-size: 22px; /* Bigger text */
+  line-height: 1.8; /* More spacing */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Education box stays bottom */
 }
 
 .cv-title {
+  font-size: 32px;
   text-align: center;
-  font-size: 26px;
-  text-decoration: underline;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
-.edu-title {
-  margin-top: 60px; /* নিচে নামানো হলো */
-  font-size: 22px;
-  text-decoration: underline;
+.edu-box {
+  margin-top: auto; /* pushes it to bottom */
 }
 
-.edu-table {
+table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
-  font-size: 18px;
-}
-
-.edu-table th, .edu-table td {
-  border: 1px solid #333;
-  padding: 8px;
-  text-align: center;
-}
-
-.btns {
-  text-align: center;
   margin-top: 20px;
+  font-size: 20px;
 }
 
-.btns button {
-  padding: 10px 20px;
-  margin: 5px;
-  background: #28a745;
-  border: none;
-  border-radius: 6px;
-  color: white;
+th, td {
+  border: 1px solid black;
+  padding: 12px;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Service / Help Corner */
+.service-box {
+  position: fixed;
+  top: 10px;
+  right: 15px;
+  background: #ffffff;
+  border: 2px solid #007bff;
+  padding: 10px 15px;
+  border-radius: 10px;
   font-size: 16px;
-  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-.btns button:hover {
-  background: #218838;
+.service-box a {
+  color: green;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.service-box i {
+  font-size: 18px;
+  margin-right: 6px;
+}
+
+@media print {
+  body {
+    background: none;
+  }
+  #form-section, button, .service-box {
+    display: none;
+  }
+  .cv {
+    box-shadow: none;
+    margin: 0;
+  }
+}
+@media print {
+  body { background: none; }
+  #form-section, .service-box, button { display: none; }
+  .cv { box-shadow: none; margin: 0; }
+}
+@media print {
+  body { background: none; }
+  #form-section, .service-box, button { display: none; }
+  .cv { box-shadow: none; margin: 0; }
 }

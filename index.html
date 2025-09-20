@@ -5,77 +5,109 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CV Generator</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+  <!-- Service / Help Corner -->
+  <div class="service-box">
+    <p><strong>Service & Help</strong></p>
+    <p>📞 01761784054</p>
+    <p>
+      <a href="https://wa.me/8801761784054" target="_blank">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </a>
+    </p>
+  </div>
+
   <div class="container">
-    <!-- CV Input Form -->
+    <!-- Input Form -->
     <section id="form-section">
-      <h1>CV Generator</h1>
+      <h1>CV Form</h1>
       <form id="cvForm">
-        <label>Full Name: <input type="text" id="name" required></label>
+        <label>Full Name: <input type="text" id="name" placeholder="Enter your full name" required></label>
         <label>Father's Name: <input type="text" id="father" required></label>
         <label>Mother's Name: <input type="text" id="mother" required></label>
         <label>Permanent Address: <input type="text" id="permanent" required></label>
         <label>Present Address: <input type="text" id="present" required></label>
         <label>Mobile Number: <input type="text" id="mobile" required></label>
         <label>Date of Birth: <input type="date" id="dob" required></label>
-        <label>Sex:
-          <select id="sex">
+
+        <label>Gender:
+          <select id="gender" required>
+            <option value="">Select</option>
             <option>Male</option>
             <option>Female</option>
             <option>Other</option>
           </select>
         </label>
-        <label>Height: <input type="text" id="height"></label>
-        <label>Religion: 
-          <select id="religion">
+
+        <label>Religion:
+          <select id="religion" required>
+            <option value="">Select</option>
             <option>Muslim</option>
             <option>Hindu</option>
             <option>Christian</option>
             <option>Buddhist</option>
+            <option>Others</option>
           </select>
         </label>
-        <label>Nationality: <input type="text" id="nationality" required></label>
 
-        <h3>Educational Qualification</h3>
-        <div class="edu">
-          <label>Exam: <input type="text" id="exam1" value="HSC"></label>
-          <label>Group: <input type="text" id="group1" value="Business"></label>
-          <label>Board: <input type="text" id="board1" value="Sylhet"></label>
-          <label>GPA: <input type="text" id="gpa1" value="3.08"></label>
-          <label>Year: <input type="text" id="year1" value="2016"></label>
-        </div>
-        <div class="edu">
-          <label>Exam: <input type="text" id="exam2" value="SSC"></label>
-          <label>Group: <input type="text" id="group2"></label>
-          <label>Board: <input type="text" id="board2"></label>
-          <label>GPA: <input type="text" id="gpa2"></label>
-          <label>Year: <input type="text" id="year2"></label>
+        <label>Nationality:
+          <select id="nationality" required>
+            <option value="">Select</option>
+            <option>Bangladeshi</option>
+            <option>Indian</option>
+            <option>Pakistani</option>
+            <option>Nepali</option>
+            <option>Others</option>
+          </select>
+        </label>
+
+        <label>Height:
+          <select id="height" required></select>
+        </label>
+
+        <!-- Education Section -->
+        <h2>Educational Qualification</h2>
+
+        <div class="education">
+          <h3>HSC</h3>
+          <label>Group: <input type="text" id="hsc-group" placeholder="e.g., Science" required></label>
+          <label>Board: <input type="text" id="hsc-board" placeholder="e.g., Sylhet" required></label>
+          <label>GPA: <input type="text" id="hsc-gpa" placeholder="e.g., 4.50" required></label>
+          <label>Year: <input type="text" id="hsc-year" placeholder="e.g., 2016" required></label>
+
+          <h3>SSC</h3>
+          <label>Group: <input type="text" id="ssc-group" placeholder="e.g., Science" required></label>
+          <label>Board: <input type="text" id="ssc-board" placeholder="e.g., Sylhet" required></label>
+          <label>GPA: <input type="text" id="ssc-gpa" placeholder="e.g., 5.00" required></label>
+          <label>Year: <input type="text" id="ssc-year" placeholder="e.g., 2014" required></label>
         </div>
 
-        <button type="button" onclick="generateCV()">Generate CV</button>
+        <button type="submit">Generate CV</button>
       </form>
     </section>
 
-    <!-- CV Preview -->
-    <section id="cv-section" style="display:none;">
-      <div id="cv" class="cv-paper">
+    <!-- CV Output -->
+    <section id="cv-section" class="cv hidden">
+      <div id="cv-content">
         <h1 class="cv-title">Curriculum Vitae</h1>
-        <p><strong>Name:</strong> <span id="r-name"></span></p>
-        <p><strong>Father's Name:</strong> <span id="r-father"></span></p>
-        <p><strong>Mother's Name:</strong> <span id="r-mother"></span></p>
-        <p><strong>Permanent Address:</strong> <span id="r-permanent"></span></p>
-        <p><strong>Present Address:</strong> <span id="r-present"></span></p>
-        <p><strong>Mobile Number:</strong> <span id="r-mobile"></span></p>
-        <p><strong>Date of Birth:</strong> <span id="r-dob"></span></p>
-        <p><strong>Sex:</strong> <span id="r-sex"></span></p>
-        <p><strong>Height:</strong> <span id="r-height"></span></p>
-        <p><strong>Religion:</strong> <span id="r-religion"></span></p>
-        <p><strong>Nationality:</strong> <span id="r-nationality"></span></p>
+        <p><strong>Name:</strong> <span id="cv-name"></span></p>
+        <p><strong>Father's Name:</strong> <span id="cv-father"></span></p>
+        <p><strong>Mother's Name:</strong> <span id="cv-mother"></span></p>
+        <p><strong>Permanent Address:</strong> <span id="cv-permanent"></span></p>
+        <p><strong>Present Address:</strong> <span id="cv-present"></span></p>
+        <p><strong>Mobile Number:</strong> <span id="cv-mobile"></span></p>
+        <p><strong>Date of Birth:</strong> <span id="cv-dob"></span></p>
+        <p><strong>Sex:</strong> <span id="cv-gender"></span></p>
+        <p><strong>Height:</strong> <span id="cv-height"></span></p>
+        <p><strong>Religion:</strong> <span id="cv-religion"></span></p>
+        <p><strong>Nationality:</strong> <span id="cv-nationality"></span></p>
 
-        <h2 class="edu-title">Educational Qualification</h2>
-        <table class="edu-table">
-          <thead>
+        <!-- Education Box -->
+        <div class="edu-box">
+          <h2>Educational Qualification</h2>
+          <table>
             <tr>
               <th>Name of Exam</th>
               <th>Group</th>
@@ -83,32 +115,27 @@
               <th>GPA</th>
               <th>Year</th>
             </tr>
-          </thead>
-          <tbody>
             <tr>
-              <td id="r-exam1"></td>
-              <td id="r-group1"></td>
-              <td id="r-board1"></td>
-              <td id="r-gpa1"></td>
-              <td id="r-year1"></td>
+              <td>HSC</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
             </tr>
             <tr>
-              <td id="r-exam2"></td>
-              <td id="r-group2"></td>
-              <td id="r-board2"></td>
-              <td id="r-gpa2"></td>
-              <td id="r-year2"></td>
+              <td>SSC</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
             </tr>
-          </tbody>
-        </table>
+          </table>
+        </div>
       </div>
-
-      <div class="btns">
-        <button onclick="printCV()">Save/Print CV</button>
-        <button onclick="editCV()">Edit Again</button>
-      </div>
+      <button onclick="window.print()">Save / Print</button>
     </section>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
