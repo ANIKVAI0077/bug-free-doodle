@@ -57,32 +57,4 @@ document.getElementById("cvForm").addEventListener("submit", function(e){
 
   // Show CV section
   document.getElementById("cv-section").style.display = "flex";
-
 });
-const textArray = ["My Website", "My Portfolio", "My World"];
-let index = 0;
-let charIndex = 0;
-let currentText = "";
-let isDeleting = false;
-
-function typeEffect() {
-  currentText = textArray[index];
-  let displayText = currentText.substring(0, charIndex);
-  document.querySelector(".typing").textContent = displayText;
-
-  if (!isDeleting && charIndex < currentText.length) {
-    charIndex++;
-    setTimeout(typeEffect, 150);
-  } else if (isDeleting && charIndex > 0) {
-    charIndex--;
-    setTimeout(typeEffect, 100);
-  } else {
-    isDeleting = !isDeleting;
-    if (!isDeleting) {
-      index = (index + 1) % textArray.length;
-    }
-    setTimeout(typeEffect, 1000);
-  }
-}
-
-document.addEventListener("DOMContentLoaded", typeEffect);
