@@ -221,3 +221,8 @@ footer .social a {
 footer .social a:hover {
   text-decoration: underline;
 }
+.typing {
+  color: #ffeb3b;
+  border-right: 2px solid #fff;
+  font-weight: bold;
+}
